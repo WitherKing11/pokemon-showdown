@@ -5648,3 +5648,16 @@ export const Abilities: import('../sim/dex-abilities').AbilityDataTable = {
 		num: -4,
 	},
 };
+	// Custom Abilities
+	anticontactonly: {
+		shortDesc: "Immune to all moves that do not make contact.",
+		onTryHit(target, source, move) {
+			if (!move.flags['contact']) {
+				this.add('-immune', target, '[from] ability: AntiContactOnly');
+				return null;
+			}
+		},
+		name: "AntiContactOnly",
+		rating: 5,
+		num: -1000, // Custom Number
+	},
